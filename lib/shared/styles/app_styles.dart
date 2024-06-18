@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles {
   // Colors
-  static const Color primaryColor = Colors.amberAccent;
+  static const Color primaryColor = Color(0xFFff6a00);
   static const Color secondaryColor = Color(0xFF285EBE);
   static const Color textColor = Color(0xFF212121);
   static const Color subtitleColor = Color(0xFF8B8B8B);
@@ -19,8 +19,8 @@ class AppStyles {
     FontWeight fontWeight = FontWeight.bold,
     Color color = AppStyles.textColor,
   }) {
-    return GoogleFonts.dongle(
-      fontSize: fontSize != null ? fontSize : 31.0,
+    return GoogleFonts.nunito(
+      fontSize: fontSize != null ? fontSize : 24.0,
       fontWeight: fontWeight,
       color: color,
     );

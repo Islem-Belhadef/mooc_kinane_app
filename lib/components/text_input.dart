@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared/styles/app_styles.dart';
 
-class PrimaryButton extends StatelessWidget {
+class TextInput extends StatelessWidget {
   final String title;
   final bool hidden;
   final bool suffix;
@@ -11,7 +11,7 @@ class PrimaryButton extends StatelessWidget {
   final cubit;
   final bool readOnly;
 
-  PrimaryButton({
+  TextInput({
     super.key,
     required this.title,
     this.hidden = false,

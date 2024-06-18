@@ -1,4 +1,4 @@
-import 'package:base_app/shared/data/constants.dart';
+import 'package:mooc_kinane/shared/data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
@@ -44,6 +44,12 @@ class AppLayout extends StatelessWidget {
                 },
                 items: [
                   BottomNavigationBarItem(
+                    icon: Icon(Iconsax.home_2),
+                    label: 'Acceuil',
+                  ),BottomNavigationBarItem(
+                    icon: Icon(Iconsax.home_2),
+                    label: 'Acceuil',
+                  ),BottomNavigationBarItem(
                     icon: Icon(Iconsax.home_2),
                     label: 'Acceuil',
                   ),

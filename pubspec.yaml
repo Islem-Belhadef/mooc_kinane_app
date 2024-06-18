@@ -1,5 +1,5 @@
-name: base_app
-description: "Base Flutter App"
+name: mooc_kinane
+description: "MOOC Kinane"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
@@ -29,9 +29,9 @@ dependencies:
 #  connectivity_plus:
 
   #firebase:
-#  firebase_core:
-#  firebase_auth:
-#  firebase_messaging:
+  firebase_core:
+  firebase_auth:
+  firebase_messaging:
 #  firebase_analytics:
 #  firebase_app_check:
 
@@ -46,10 +46,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
-    - assets/videos/
-    - assets/fonts/
-    - assets/audio/
+    - .env
+    - lib/assets/images/
+    - lib/assets/videos/
+    - lib/assets/fonts/
+    - lib/assets/audio/
 
   # fonts:
   #   - family: Schyler

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "891201875410",
+    "project_id": "mooc-kinane-eba27",
+    "storage_bucket": "mooc-kinane-eba27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891201875410:android:0cbc37c36f978e4111ec0b",
+        "android_client_info": {
+          "package_name": "com.codevit.base_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf79vNkKUggw91AGFeNEo76uM8V-asaNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

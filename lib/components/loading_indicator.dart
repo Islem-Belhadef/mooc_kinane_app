@@ -1,4 +1,4 @@
-import 'package:base_app/shared/styles/app_styles.dart';
+import 'package:mooc_kinane/shared/styles/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
