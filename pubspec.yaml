@@ -1,0 +1,61 @@
+name: base_app
+description: "Base Flutter App"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  bloc:
+  flutter_bloc:
+  dio:
+  shared_preferences:
+  conditional_builder_null_safety:
+  google_fonts:
+  iconsax: ^0.0.8
+  fluttertoast:
+  flutter_dotenv:
+  permission_handler:
+  url_launcher:
+#  flutter_localizations:
+#    sdk: flutter
+#  intl: any
+
+#  connectivity_plus:
+
+  #firebase:
+#  firebase_core:
+#  firebase_auth:
+#  firebase_messaging:
+#  firebase_analytics:
+#  firebase_app_check:
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/videos/
+    - assets/fonts/
+    - assets/audio/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+
