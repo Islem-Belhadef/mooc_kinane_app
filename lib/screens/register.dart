@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:mooc_kinane/components/text_input.dart';
-import 'package:mooc_kinane/screens/login.dart';
-import 'package:mooc_kinane/shared/data/constants.dart';
-import 'package:mooc_kinane/shared/state/app_cubit.dart';
-import 'package:mooc_kinane/shared/state/app_states.dart';
+import 'package:klearn/components/text_input.dart';
+import 'package:klearn/screens/login.dart';
+import 'package:klearn/shared/data/constants.dart';
+import 'package:klearn/shared/state/app_cubit.dart';
+import 'package:klearn/shared/state/app_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mooc_kinane/shared/styles/app_styles.dart';
+import 'package:klearn/shared/styles/app_styles.dart';
 
 import '../components/primary_button.dart';
 

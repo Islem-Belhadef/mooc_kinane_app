@@ -1,4 +1,4 @@
-import 'package:mooc_kinane/shared/data/constants.dart';
+import 'package:klearn/shared/data/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';

@@ -1,4 +1,4 @@
-import 'package:mooc_kinane/shared/data/constants.dart';
+import 'package:klearn/shared/data/constants.dart';
 import 'package:dio/dio.dart';
 
 class DioHelper {

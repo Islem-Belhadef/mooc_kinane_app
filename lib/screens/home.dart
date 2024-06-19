@@ -1,5 +1,5 @@
-import 'package:mooc_kinane/shared/state/app_cubit.dart';
-import 'package:mooc_kinane/shared/state/app_states.dart';
+import 'package:klearn/shared/state/app_cubit.dart';
+import 'package:klearn/shared/state/app_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

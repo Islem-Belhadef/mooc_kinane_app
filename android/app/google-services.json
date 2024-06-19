@@ -12,7 +12,12 @@
           "package_name": "com.codevit.base_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "891201875410-9vpudtnh74dij3ika5u56jlg46lj3866.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAf79vNkKUggw91AGFeNEo76uM8V-asaNo"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891201875410-9vpudtnh74dij3ika5u56jlg46lj3866.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "891201875410-rqbvfhmrcmgp6n7bu8rrao6e1ned0bh5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codevit.baseApp"
+              }
+            }
+          ]
         }
       }
     }

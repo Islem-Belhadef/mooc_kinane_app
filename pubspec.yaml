@@ -1,4 +1,4 @@
-name: mooc_kinane
+name: klearn
 description: "MOOC Kinane"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -32,6 +32,8 @@ dependencies:
   firebase_core:
   firebase_auth:
   firebase_messaging:
+  google_sign_in:
+  flutter_facebook_auth:
 #  firebase_analytics:
 #  firebase_app_check:
 

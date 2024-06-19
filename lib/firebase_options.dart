@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '891201875410',
     projectId: 'mooc-kinane-eba27',
     storageBucket: 'mooc-kinane-eba27.appspot.com',
-    iosBundleId: 'com.codevit.baseApp',
+    iosClientId: '891201875410-rqbvfhmrcmgp6n7bu8rrao6e1ned0bh5.apps.googleusercontent.com',
+    iosBundleId: 'com.codevit.KLearn',
   );
 
 }
