@@ -33,14 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  change_app_package_name:
-    dependency: "direct dev"
+  carousel_slider:
+    dependency: "direct main"
     description:
-      name: change_app_package_name
-      sha256: "494e7943d4e8ba6a70970bf0fac293c866a121c50096dc9e027565bfbfc5c7a1"
+      name: carousel_slider
+      sha256: "9c695cc963bf1d04a47bd6021f68befce8970bcd61d24938e1fb0918cf5d9c42"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "4.2.1"
   characters:
     dependency: transitive
     description:

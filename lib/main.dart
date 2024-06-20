@@ -1,23 +1,25 @@
+import 'package:klearn/layout/app_layout.dart';
+import 'package:klearn/screens/home.dart';
 import 'package:klearn/screens/register.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/data/constants.dart';
 import 'package:klearn/shared/data/dio_helper.dart';
 import 'package:klearn/shared/state/app_cubit.dart';
 import 'package:klearn/shared/styles/app_styles.dart';
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-// import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await CacheHelper.init();
   await DioHelper.init();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: AppStyles.primaryColor),
             useMaterial3: true,
           ),
-          home: RegisterScreen(),
+          home: AppLayout(),
         ));
   }
 }

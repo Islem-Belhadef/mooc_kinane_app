@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 final base_url = 'http://127.0.0.1:8000/api';
 
-final app_name = 'App Name';
+final app_name = 'K-Learn';
 
 String getOs() {
   return Platform.operatingSystem;
