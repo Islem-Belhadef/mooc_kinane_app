@@ -1,4 +1,4 @@
-package com.codevit.base_app
+package com.codevit.klearn
 
 import io.flutter.embedding.android.FlutterActivity
 
