@@ -1,6 +1,6 @@
+import 'package:hive_flutter/adapters.dart';
 import 'package:klearn/layout/app_layout.dart';
-import 'package:klearn/screens/home.dart';
-import 'package:klearn/screens/register.dart';
+import 'package:klearn/screens/course.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/data/constants.dart';
 import 'package:klearn/shared/data/dio_helper.dart';
@@ -16,6 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await CacheHelper.init();
+  await Hive.initFlutter();
   await DioHelper.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: AppStyles.primaryColor),
             useMaterial3: true,
           ),
-          home: AppLayout(),
+          home: CourseScreen(),
         ));
   }
 }

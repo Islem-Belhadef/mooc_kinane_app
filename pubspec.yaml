@@ -23,6 +23,11 @@ dependencies:
   permission_handler:
   url_launcher:
   carousel_slider:
+  video_player:
+  flick_video_player:
+  path_provider:
+  hive:
+  hive_flutter:
 #  flutter_localizations:
 #    sdk: flutter
 #  intl: any

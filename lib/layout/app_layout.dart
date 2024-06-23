@@ -47,11 +47,14 @@ class AppLayout extends StatelessWidget {
                     icon: Icon(Iconsax.home_2),
                     label: 'Acceuil',
                   ),BottomNavigationBarItem(
-                    icon: Icon(Iconsax.home_2),
-                    label: 'Acceuil',
+                    icon: Icon(Iconsax.book_saved),
+                    label: 'Mes cours',
                   ),BottomNavigationBarItem(
-                    icon: Icon(Iconsax.home_2),
-                    label: 'Acceuil',
+                    icon: Icon(Iconsax.import),
+                    label: 'Téléchargements',
+                  ),BottomNavigationBarItem(
+                    icon: Icon(Iconsax.user),
+                    label: 'Profil',
                   ),
                 ],
               ),

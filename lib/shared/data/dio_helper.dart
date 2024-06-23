@@ -70,4 +70,17 @@ class DioHelper {
           'authorization': 'Bearer $token',
         }));
   }
+
+  static Future<Response> downloadData({
+    required String url,
+    required var savePath,
+    required Function()? onReceiveProgress(received, total),
+    String? token,
+  }) async {
+    return await dio.download(url, savePath,
+        onReceiveProgress: onReceiveProgress,
+        options: Options(headers: {
+          'authorization': 'Bearer $token',
+        }));
+  }
 }
