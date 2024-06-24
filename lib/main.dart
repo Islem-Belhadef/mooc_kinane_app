@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => AppCubit())],
+        providers: [
+          BlocProvider(create: (context) => AppCubit()..createDatabase()..getDownloadedVideos())
+        ],
         // supportedLocales: L10n.all,
         // locale: Locale(CacheHelper.getData(key: 'lang')),
         // localizationsDelegates: [

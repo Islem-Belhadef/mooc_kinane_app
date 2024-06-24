@@ -1,28 +1,31 @@
+import 'dart:io';
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:klearn/components/primary_button.dart';
+import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/state/app_cubit.dart';
 import 'package:klearn/shared/state/app_states.dart';
 import 'package:video_player/video_player.dart';
 
-class CourseScreen extends StatefulWidget {
-  const CourseScreen({super.key});
+class DownloadedCourseScreen extends StatefulWidget {
+  const DownloadedCourseScreen({super.key});
 
   @override
-  State<CourseScreen> createState() => _CourseScreenState();
+  State<DownloadedCourseScreen> createState() => _DownloadedCourseScreenState();
 }
 
-class _CourseScreenState extends State<CourseScreen> {
+class _DownloadedCourseScreenState extends State<DownloadedCourseScreen> {
   late VideoPlayerController _controller;
   late FlickManager flickManager;
-  String _url = 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4';
+  String filePath = CacheHelper.getData(key: 'video_path');
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(_url),
+    _controller = VideoPlayerController.file(File(filePath),
         videoPlayerOptions: VideoPlayerOptions(
           allowBackgroundPlayback: false,
         ));
@@ -39,10 +42,11 @@ class _CourseScreenState extends State<CourseScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
+
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = AppCubit.get(context);
-
+        String _url = cubit.videoFilePath;
         return Scaffold(
           body: SafeArea(
             child: Column(
@@ -50,12 +54,6 @@ class _CourseScreenState extends State<CourseScreen> {
                 AspectRatio(
                     aspectRatio: _controller.value.aspectRatio,
                     child: FlickVideoPlayer(flickManager: flickManager)),
-                PrimaryButton(
-                  title: 'Télécharger',
-                  fun: () {
-                    cubit.downloadVideo(_url, context);
-                  },
-                ),
               ],
             ),
           ),

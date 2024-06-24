@@ -2,16 +2,21 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:klearn/screens/downloaded_course.dart';
+import 'package:klearn/screens/downloads.dart';
 import 'package:klearn/screens/home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:klearn/shared/data/dio_helper.dart';
+import 'package:klearn/shared/data/cache_helper.dart';
+import 'package:klearn/shared/data/constants.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
+import '../../models/course.dart';
 import 'app_states.dart';
 
 class AppCubit extends Cubit<AppStates> {
@@ -25,7 +30,7 @@ class AppCubit extends Cubit<AppStates> {
   List<Widget> screens = [
     HomeScreen(),
     HomeScreen(),
-    HomeScreen(),
+    DownloadsScreen(),
     HomeScreen()
   ];
 
@@ -89,6 +94,55 @@ class AppCubit extends Cubit<AppStates> {
 
 //    download course
 
+  Database? database;
+
+  void createDatabase() async {
+    var database = await openDatabase('klearn.db', version: 1,
+        onCreate: (database, version) {
+      database
+          .execute(
+              'CREATE TABLE courses (id INTEGER PRIMARY, title TEXT, description TEXT, video_path TEXT, watch_time TEXT, status INTEGER)')
+          .then((value) => print('Courses table created successfully'))
+          .catchError((error) =>
+              print('Error when creating courses table ${error.toString()}'));
+    }, onOpen: (database) {
+      print('Database opened');
+    });
+  }
+
+  void insertCourseToDB({
+    required String title,
+    required String description,
+    required String videoPath,
+  }) {
+    database!.transaction((txn) async {
+      await txn
+          .rawInsert(
+              'INSERT INTO courses (title, description, video_path, watch_time, status) VALUES(?, ?, ?, "00:00", 0)',
+              [
+                title,
+                description,
+                videoPath
+              ])
+          .then((value) => print('inserted successfully'))
+          .catchError((error) =>
+              print('error while inserting into database ${error.toString()}'));
+    });
+  }
+
+  List<CourseModel> downloadedCourses = [];
+  CourseModel? downloadedCourse;
+
+  void getDownloadedVideos() async {
+    downloadedCourses = [];
+    List<Map<String, dynamic>> courses =
+        await database!.rawQuery('SELECT * FROM courses');
+    courses.forEach((course) {
+      downloadedCourses.add(CourseModel.fromJson(course));
+    });
+  }
+
+  List<String>? downloads = CacheHelper.getListData(key: 'downloads')!;
   var downloadProgress;
   var videoFilePath;
   Dio dio = Dio();
@@ -110,6 +164,7 @@ class AppCubit extends Cubit<AppStates> {
         },
       );
       videoFilePath = savePath;
+      CacheHelper.setData(key: 'video_path', value: savePath);
       print(videoFilePath);
       // Save the file path to Hive
       final box = await Hive.openBox<String>('videos');
@@ -119,7 +174,17 @@ class AppCubit extends Cubit<AppStates> {
           content: Text(videoFilePath),
         ),
       );
+
       emit(DownloadVideoSuccessState());
+      downloads != null
+          ? downloads!.add(videoFilePath)
+          : downloads = [videoFilePath];
+      CacheHelper.setData(key: 'downloads', value: downloads);
+      insertCourseToDB(
+          title: 'course 1',
+          description: "Course 1 description",
+          videoPath: videoFilePath);
+      navigateTo(context, DownloadedCourseScreen());
     } catch (e) {
       print('Error downloading file: $e');
       ScaffoldMessenger.of(context).showSnackBar(
