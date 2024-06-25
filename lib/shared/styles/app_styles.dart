@@ -20,7 +20,7 @@ class AppStyles {
     Color color = AppStyles.textColor,
   }) {
     return GoogleFonts.nunito(
-      fontSize: fontSize != null ? fontSize : 24.0,
+      fontSize: fontSize != null ? fontSize : 20.0,
       fontWeight: fontWeight,
       color: color,
     );

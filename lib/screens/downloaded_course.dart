@@ -8,10 +8,12 @@ import 'package:klearn/components/primary_button.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/state/app_cubit.dart';
 import 'package:klearn/shared/state/app_states.dart';
+import 'package:klearn/shared/styles/app_styles.dart';
 import 'package:video_player/video_player.dart';
 
 class DownloadedCourseScreen extends StatefulWidget {
-  const DownloadedCourseScreen({super.key});
+  final int courseId;
+  const DownloadedCourseScreen({super.key, required this.courseId});
 
   @override
   State<DownloadedCourseScreen> createState() => _DownloadedCourseScreenState();
@@ -25,38 +27,43 @@ class _DownloadedCourseScreenState extends State<DownloadedCourseScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.file(File(filePath),
-        videoPlayerOptions: VideoPlayerOptions(
-          allowBackgroundPlayback: false,
-        ));
-    flickManager = FlickManager(videoPlayerController: _controller);
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-    _controller.setLooping(false);
-    _controller.initialize().then((_) => setState(() {}));
-    _controller.play();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
-
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = AppCubit.get(context);
-        String _url = cubit.videoFilePath;
-        return Scaffold(
-          body: SafeArea(
-            child: Column(
-              children: [
-                AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: FlickVideoPlayer(flickManager: flickManager)),
-              ],
+        return FutureBuilder(
+          future: cubit.getDownloadedVideo(widget.courseId),
+          builder: (context, snapshot) {
+            _controller = VideoPlayerController.file(File(cubit.downloadedCourse!.video_path!),
+                videoPlayerOptions: VideoPlayerOptions(
+                  allowBackgroundPlayback: false,
+                ));
+            flickManager = FlickManager(videoPlayerController: _controller);
+
+            _controller.addListener(() {
+              setState(() {});
+            });
+            _controller.setLooping(false);
+            _controller.initialize().then((_) => setState(() {}));
+            _controller.play();
+            return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: FlickVideoPlayer(flickManager: flickManager)),
+                  Text(cubit.downloadedCourse!.title!, style: AppStyles.headingTextStyle(),),
+                  Text(cubit.downloadedCourse!.description!, style: AppStyles.regularTextStyle(),),
+                ],
+              ),
             ),
-          ),
+          );
+          },
         );
       },
     );

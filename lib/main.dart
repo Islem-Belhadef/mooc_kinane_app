@@ -1,6 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:klearn/layout/app_layout.dart';
 import 'package:klearn/screens/course.dart';
+import 'package:klearn/screens/login.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/data/constants.dart';
 import 'package:klearn/shared/data/dio_helper.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => AppCubit()..createDatabase()..getDownloadedVideos())
+          BlocProvider(create: (context) => AppCubit()..createDatabase())
         ],
         // supportedLocales: L10n.all,
         // locale: Locale(CacheHelper.getData(key: 'lang')),
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
                 ColorScheme.fromSeed(seedColor: AppStyles.primaryColor),
             useMaterial3: true,
           ),
-          home: CourseScreen(),
+          home: AppLayout(),
         ));
   }
 }

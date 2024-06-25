@@ -15,7 +15,6 @@ class AppLayout extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       builder: (context, state) {
         var cubit = AppCubit.get(context);
-
         return Scaffold(
             appBar: AppBar(
               // backgroundColor: Color(0xFFFED842),
@@ -46,13 +45,16 @@ class AppLayout extends StatelessWidget {
                   BottomNavigationBarItem(
                     icon: Icon(Iconsax.home_2),
                     label: 'Acceuil',
-                  ),BottomNavigationBarItem(
+                  ),
+                  BottomNavigationBarItem(
                     icon: Icon(Iconsax.book_saved),
                     label: 'Mes cours',
-                  ),BottomNavigationBarItem(
+                  ),
+                  BottomNavigationBarItem(
                     icon: Icon(Iconsax.import),
                     label: 'Téléchargements',
-                  ),BottomNavigationBarItem(
+                  ),
+                  BottomNavigationBarItem(
                     icon: Icon(Iconsax.user),
                     label: 'Profil',
                   ),
