@@ -16,7 +16,7 @@ class CourseScreen extends StatefulWidget {
 class _CourseScreenState extends State<CourseScreen> {
   late VideoPlayerController _controller;
   late FlickManager flickManager;
-  String _url = 'https://media.istockphoto.com/id/1346773711/video/drone-shot-of-a-young-mother-with-her-young-son-in-a-carrier-hiking-on-a-mountain-trail-at.mp4?s=mp4-640x640-is&k=20&c=O7g6vhbFy5cRooH3DvBQevzToVVn0CVoO10ortFY5QU=';
+  String _url = 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4';
 
   @override
   void initState() {

@@ -1,7 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:klearn/layout/app_layout.dart';
 import 'package:klearn/screens/course.dart';
-import 'package:klearn/screens/login.dart';
+import 'package:klearn/screens/register.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/data/constants.dart';
 import 'package:klearn/shared/data/dio_helper.dart';
@@ -48,8 +48,6 @@ class MyApp extends StatelessWidget {
           title: app_name,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: AppStyles.primaryColor),
             useMaterial3: true,
           ),
           home: AppLayout(),

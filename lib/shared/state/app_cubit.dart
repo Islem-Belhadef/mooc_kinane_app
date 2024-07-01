@@ -14,6 +14,7 @@ import 'package:klearn/screens/downloaded_course.dart';
 import 'package:klearn/screens/downloads.dart';
 import 'package:klearn/screens/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:klearn/screens/profile.dart';
 import 'package:klearn/shared/data/cache_helper.dart';
 import 'package:klearn/shared/data/constants.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,7 +34,7 @@ class AppCubit extends Cubit<AppStates> {
     HomeScreen(),
     HomeScreen(),
     DownloadsScreen(),
-    HomeScreen()
+    ProfileScreen()
   ];
 
   void changeBNB(int index) {
@@ -136,14 +137,23 @@ class AppCubit extends Cubit<AppStates> {
 
   List<CourseModel> downloadedCourses = [];
   CourseModel? downloadedCourse;
+  bool isDownloadedCourseLoaded = false;
+
+  void refreshIsDownloadedCourseLoaded(int courseId) {
+    isDownloadedCourseLoaded = false;
+    getDownloadedVideo(courseId);
+  }
 
   Future<CourseModel> getDownloadedVideo(int courseId) async {
-    downloadedCourse = null;
-    List<Map<String, dynamic>> courses = await database
-        .rawQuery('SELECT * FROM courses WHERE id = ?', [courseId]);
+    if(!isDownloadedCourseLoaded) {
+      downloadedCourse = null;
+      List<Map<String, dynamic>> courses = await database
+          .rawQuery('SELECT * FROM courses WHERE id = ?', [courseId]);
 
-    downloadedCourse = CourseModel.fromJson(courses[0]);
+      downloadedCourse = CourseModel.fromJson(courses[0]);
+    }
 
+    isDownloadedCourseLoaded = true;
     return downloadedCourse!;
   }
 
